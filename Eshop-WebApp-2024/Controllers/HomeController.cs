@@ -26,12 +26,17 @@ namespace Eshop_WebApp_2024.Controllers
         {
             return View();
         }
+        public IActionResult GivingData()
+        {
+            return View();
+        }
 
-        public IActionResult WebAPI()
+        public IActionResult WebAPI(string mytext)
         {
           var response =   _httpClientEshopWebAPI.GetAsync("https://localhost:7191/WeatherForecast/product");
             HttpResponseMessage responseMessage = response.Result;
             ViewData["Data"] = responseMessage.Content.ReadAsStringAsync().Result;
+            ViewData["mytext"] = mytext;
             return View();
         }
 
